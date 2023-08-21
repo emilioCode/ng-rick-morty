@@ -1,0 +1,29 @@
+<div class="App">
+    <header class="App-header">
+
+        <div class="characteres">
+            <h1>Personajes</h1>
+            <app-ui-span 
+                [text]="'Volver a inicio'"
+                [style]="'back-home'"
+                [routerLink]="['../']">
+            </app-ui-span>
+            <div class="container-characters">
+                <ng-container *ngIf="(characters$ | async) as characters">
+                    <ng-container *ngFor="let character of characters.results">
+                        <app-character
+                            [character]="character"
+                        ></app-character>
+                    </ng-container>
+                </ng-container>
+                
+            </div>
+
+            <app-ui-span 
+                [text]="'Volver a inicio'"
+                [style]="'back-home'"
+                [routerLink]="['../']">
+            </app-ui-span>
+        </div>
+    </header>
+</div>

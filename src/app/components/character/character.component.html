@@ -1,0 +1,22 @@
+<div class="character-container">
+    <div>
+        <img src={{character.image}} alt={{character.name}}/>
+    </div>
+    <div>
+        <h3>{{character.name}}</h3>
+        <h6  *ngIf="character.status === 'Alive'">
+            <span class="alive"></span> Alive
+        </h6>
+        <h6 *ngIf="character.status !== 'Alive'">
+            <span class="dead"></span> Dead
+        </h6>
+        <p>
+            <span class="text-grey">Episodios: </span>
+            <span>{{character.episode?.length}}</span>
+        </p>
+        <p>
+            <span class="text-grey">Especie: </span>
+            <span>{{character.species}}</span>
+        </p>
+    </div>
+</div>
