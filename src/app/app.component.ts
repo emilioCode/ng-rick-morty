@@ -8,11 +8,4 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class AppComponent {
   title = 'ng-rick-morty';
-
-  constructor(private sanitizer: DomSanitizer) { }
-
-  getAssetImage(): SafeUrl {
-    const imageUrl = '../assets/images/rick-morty.png'; // Path to your image in the assets folder
-    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
-  }
 }
