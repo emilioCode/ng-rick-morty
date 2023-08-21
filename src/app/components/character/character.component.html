@@ -4,9 +4,11 @@
     </div>
     <div>
         <h3>{{character.name}}</h3>
-        <h6>
-            <span class="alive" *ngIf="character.status === 'Alive'"> Alive</span>
-            <span class="dead" *ngIf="character.status !== 'Alive'"> Dead</span>
+        <h6  *ngIf="character.status === 'Alive'">
+            <span class="alive"></span> Alive
+        </h6>
+        <h6 *ngIf="character.status !== 'Alive'">
+            <span class="dead"></span> Dead
         </h6>
         <p>
             <span class="text-grey">Episodios: </span>

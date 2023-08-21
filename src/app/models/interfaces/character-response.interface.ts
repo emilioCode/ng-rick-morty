@@ -1,6 +1,6 @@
 export interface CharacterResponse {
-    info: InfoCharacterRequest,
-    results: Character[]
+    info: InfoCharacterRequest | undefined,
+    results: ReadonlyArray<Character>
 }
 
 export interface InfoCharacterRequest {

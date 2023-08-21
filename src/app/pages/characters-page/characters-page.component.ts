@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { loadCharacters, } from 'src/app/state/actions/characters.actions';
+import { selectCharacters } from 'src/app/state/selectors/characters.selectors';
 
 @Component({
   selector: 'app-characters-page',
@@ -8,10 +11,16 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class CharactersPageComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  characters$: Observable<any> = new Observable();
+
+  constructor(private store: Store<any>) { }
 
   ngOnInit(): void {
-    this.apiService.getCharacters().subscribe(res => console.log(res))
+
+    this.characters$ = this.store.select(selectCharacters);
+
+    this.store.dispatch(loadCharacters());
+
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Character } from 'src/app/models/interfaces/character-response.interface';
 
 @Component({
   selector: 'app-character',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./character.component.scss']
 })
 export class CharacterComponent {
-  character: any = {};
+  @Input() character: any = {};
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,7 +8,13 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CharactersPageComponent } from './pages/characters-page/characters-page.component';
 import { UiSpanComponent } from './components/ui-span/ui-span.component';
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects'
+import { ItemsEffects } from './state/effects/characters.effects';
+
+import * as fromApp from './state/app.state';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,10 @@ import { HttpClientModule } from '@angular/common/http'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(fromApp.appReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([ItemsEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
